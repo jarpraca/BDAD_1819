@@ -172,15 +172,31 @@ insert into Agenda(data) values ('2019-09-30');
 
 insert into Pais(id, nome) values (1,"Portugal");
 insert into Pais(id, nome) values (2,"Estados Unidos");
+insert into Pais(id, nome) values (3,"Espanha");
+insert into Pais(id, nome) values (4,"França");
+insert into Pais(id, nome) values (5,"Inglaterra");
+insert into Pais(id, nome) values (6,"Italia");
+insert into Pais(id, nome) values (7,"Japao");
+insert into Pais(id, nome) values (8,"Angola");
+insert into Pais(id, nome) values (9,"Australia");
 
 insert into Cidade(id, nome, pais) values(1,"Porto", 1);
-insert into Cidade(id, nome, pais) values(2, "Lisboa", 1);
+insert into Cidade(id, nome, pais) values(2,"Lisboa", 1);
 insert into Cidade(id, nome, pais) values(3,"Braga", 1);
 insert into Cidade(id, nome, pais) values(4,"Felgueiras", 1);
 insert into Cidade(id, nome, pais) values(5,"Fafe", 1);
 insert into Cidade(id, nome, pais) values(6,"Aveiro", 1);
 insert into Cidade(id, nome, pais) values(7,"Portimao", 1);
 insert into Cidade(id, nome, pais) values(8,"Alentejo", 1);
+insert into Cidade(id, nome, pais) values(9,"Porto", 1);
+insert into Cidade(id, nome, pais) values(10,"Nova Iorque", 2);
+insert into Cidade(id, nome, pais) values(11,"Madrid", 3);
+insert into Cidade(id, nome, pais) values(12,"Paris", 4);
+insert into Cidade(id, nome, pais) values(13,"Londres", 5);
+insert into Cidade(id, nome, pais) values(14,"Roma", 6);
+insert into Cidade(id, nome, pais) values(15,"Toquio", 7);
+insert into Cidade(id, nome, pais) values(16,"Luanda", 8);
+insert into Cidade(id, nome, pais) values(17,"Sydney", 9);
 
 insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (1,"José Ribeiro", "1967-05-23", "jribeiro@gmail.com", "+351925317443", "Rua das Flores, 12", "4500-200", NULL, 1);
 insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (2,"Stuart Little", "1950-07-09", "slittle@gmail.com", "+1-541-754-3010", "2201 N American St, Philadelphia", "PA 19133", NULL, 2);
