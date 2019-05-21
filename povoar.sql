@@ -202,11 +202,19 @@ insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codig
 insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (2,"Stuart Little", "1950-07-09", "slittle@gmail.com", "+1-541-754-3010", "2201 N American St, Philadelphia", "PA 19133", NULL, 2);
 insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (3,"Marta Silva", "1985-01-09", "msilva15@gmail.com", "+351914327743", "Rua do Sol, 215", "4520-330", NULL, 1);
 insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (4,"Ricardo Sousa", "2000-12-23", "rsousa@gmail.com", "+351965497443", "Rua da Alegria, 314", "4320-900", NULL, 1);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (5,"Penélope Cruz", "1974-04-28", "pcruz@gmail.com", "+3437913627", "Calle de los Embajadores 1633, Madrid", "28045", NULL, 3);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (6,"Kit Harington", "1986-12-26", "kharington@gmail.com", "+448235742", "6232 Tottenham Court Rd, London", "A400", NULL, 5);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (7,"Monica Bellucci", "1964-09-30", "mbelluci@gmail.com", "+3903654727", "Viale Aurelio Saffi 25, Roma", "00152", NULL, 6);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (8,"Chris Hemsworth", "1983-08-11", "chemsworth@gmail.com", "+618362842", "1651 Bunker Rd, Sydney", "NSW 2199", NULL, 9);
 insert into Anfitriao (id) values (1); 
 insert into Anfitriao (id) values (2);
+insert into Anfitriao (id) values (3);
 insert into Cliente (id) values (1);
 insert into Cliente (id) values (3);
-insert into Cliente (id) values (4);
+insert into Cliente (id) values (5);
+insert into Cliente (id) values (6);
+insert into Cliente (id) values (7);
+insert into Cliente (id) values (8);
 
 insert into MetodoDePagamento(id,nome) values(1,"Multibanco");
 insert into MetodoDePagamento(id,nome) values(2,"MB Way");

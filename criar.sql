@@ -32,8 +32,8 @@ CREATE TABLE Utilizador (
     id              INTEGER PRIMARY KEY,
     nome            VARCHAR(30) NOT NULL, 
     dataNascimento  DATE        NOT NULL, 
-    email           VARCHAR(30) NOT NULL, 
-    telefone        VARCHAR(15) NOT NULL, 
+    email           VARCHAR(30) UNIQUE NOT NULL, 
+    telefone        VARCHAR(15) UNIQUE NOT NULL, 
     morada          VARCHAR(250) NOT NULL, 
     codigoPostal    VARCHAR(10) NOT NULL, 
     classificacaoMedia INTEGER CHECK(classificacaoMedia >= 1 AND classificacaoMedia <= 5),
@@ -83,7 +83,8 @@ CREATE TABLE Reserva (
     dataCheckOut DATE   NOT NULL,
     numHospedes INTEGER CHECK (numHospedes > 0), 
     precoTotal  REAL    CHECK (precoTotal > 0), 
-    habitacao   INTEGER REFERENCES Habitacao (id)
+    habitacao   INTEGER REFERENCES Habitacao (id),
+    UNIQUE (dataCheckIn, dataCheckOut, habitacao)
 );
 
 -- Table: Estado
