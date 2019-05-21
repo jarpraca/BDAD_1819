@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS Pais;
 
 CREATE TABLE Pais (
     id      INTEGER PRIMARY KEY,
-    nome    VARCHAR(15) NOT NULL
+    nome    VARCHAR(15) UNIQUE NOT NULL 
 );
 
 -- Table: Cidade
@@ -32,8 +32,8 @@ CREATE TABLE Utilizador (
     id              INTEGER PRIMARY KEY,
     nome            VARCHAR(30) NOT NULL, 
     dataNascimento  DATE        NOT NULL, 
-    email           VARCHAR(30) UNIQUE, 
-    telefone        VARCHAR(15) UNIQUE, 
+    email           VARCHAR(30) NOT NULL, 
+    telefone        VARCHAR(15) NOT NULL, 
     morada          VARCHAR(250) NOT NULL, 
     codigoPostal    VARCHAR(10) NOT NULL, 
     classificacaoMedia INTEGER CHECK(classificacaoMedia >= 1 AND classificacaoMedia <= 5),
@@ -109,12 +109,11 @@ CREATE TABLE Cancelamento (
 DROP TABLE IF EXISTS ClassificacaoPorAnfitriao;
 
 CREATE TABLE ClassificacaoPorAnfitriao (
-    classificacao   INTEGER CHECK(classificacao >= 1 AND classificacao <= 5) DEFAULT 'Nao preenchido', 
+    classificacao   INTEGER CHECK(classificacao >= 1 AND classificacao <= 5), 
     descricao       VARCHAR(500) DEFAULT 'Nao preenchido', 
-    estadia         INTEGER REFERENCES Estado (id) ON DELETE RESTRICT ON UPDATE RESTRICT, 
-    reserva         INTEGER REFERENCES Estado (reserva) ON DELETE RESTRICT ON UPDATE RESTRICT, 
-    PRIMARY KEY (reserva),
-    CHECK(estadia=0)
+    reserva         INTEGER REFERENCES Reserva (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
+    anfitriao       INTEGER REFERENCES Anfitriao (id) ON DELETE RESTRICT ON UPDATE RESTRICT, 
+    PRIMARY KEY (reserva)
 );
 
 -- Table: ClassificacaoPorCliente
@@ -128,10 +127,9 @@ CREATE TABLE ClassificacaoPorCliente (
     outros      VARCHAR(500), 
     classificacaoAnfitriao  INTEGER CHECK(classificacaoAnfitriao >= 1 AND classificacaoAnfitriao <= 5),
     descricaoAnfitriao      VARCHAR(500) DEFAULT 'Nao preenchido', 
-    estadia INTEGER REFERENCES Estado (id)  ON DELETE RESTRICT ON UPDATE RESTRICT,
-    reserva INTEGER REFERENCES Estado (reserva) ON DELETE RESTRICT ON UPDATE RESTRICT, 
-    PRIMARY KEY (estadia),
-    CHECK(estadia=0) 
+    cliente INTEGER REFERENCES Cliente (id)  ON DELETE RESTRICT ON UPDATE RESTRICT,
+    reserva INTEGER REFERENCES Reserva (id) ON DELETE RESTRICT ON UPDATE RESTRICT, 
+    PRIMARY KEY (reserva)
 );
 
 -- Table: Comodidade
