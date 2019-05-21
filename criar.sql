@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS MetodoDePagamento;
 
 CREATE TABLE MetodoDePagamento (
     id      INTEGER PRIMARY KEY,
-    nome    VARCHAR(25)  NOT NULL
+    nome    VARCHAR(25) UNIQUE NOT NULL
 );
 
 -- Table: Aceita
@@ -79,8 +79,8 @@ DROP TABLE IF EXISTS Reserva;
 
 CREATE TABLE Reserva (
     id          INTEGER PRIMARY KEY, 
-    dataCheckIn DATE    NOT NULL, 
-    dataCheckOut DATE   NOT NULL, 
+    dataCheckIn DATE    NOT NULL,
+    dataCheckOut DATE   NOT NULL,
     numHospedes INTEGER CHECK (numHospedes > 0), 
     precoTotal  REAL    CHECK (precoTotal > 0), 
     habitacao   INTEGER REFERENCES Habitacao (id)
@@ -91,7 +91,7 @@ DROP TABLE IF EXISTS Estado;
 
 CREATE TABLE Estado (
     id      INTEGER PRIMARY KEY,                 
-    estado  CHAR(9), 
+    estado  CHAR(9) UNIQUE NOT NULL, 
     reserva INTEGER REFERENCES Reserva(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -124,7 +124,7 @@ CREATE TABLE ClassificacaoPorCliente (
     valor       INTEGER CHECK(valor >= 1 AND valor <= 5),
     checkIn     INTEGER CHECK(checkIn >= 1 AND checkIn <= 5),
     localizacao INTEGER CHECK(localizacao >= 1 AND localizacao <= 5),
-    outros      VARCHAR(500), 
+    outros      VARCHAR(500) DEFAULT 'Nao preenchido', 
     classificacaoAnfitriao  INTEGER CHECK(classificacaoAnfitriao >= 1 AND classificacaoAnfitriao <= 5),
     descricaoAnfitriao      VARCHAR(500) DEFAULT 'Nao preenchido', 
     cliente INTEGER REFERENCES Cliente (id)  ON DELETE RESTRICT ON UPDATE RESTRICT,
@@ -137,7 +137,7 @@ DROP TABLE IF EXISTS Comodidade;
 
 CREATE TABLE Comodidade (
     id      INTEGER PRIMARY KEY,
-    nome    VARCHAR(15)  NOT NULL
+    nome    VARCHAR(15) UNIQUE NOT NULL
 );
 
 -- Table: Efetua
@@ -163,7 +163,7 @@ DROP TABLE IF EXISTS TipoDeHabitacao;
 
 CREATE TABLE TipoDeHabitacao (
     id   INTEGER PRIMARY KEY,
-    nome VARCHAR(30) NOT NULL
+    nome VARCHAR(30) UNIQUE NOT NULL
 );
 
 -- Table: PoliticaDeCancelamento
@@ -171,7 +171,7 @@ DROP TABLE IF EXISTS PoliticaDeCancelamento;
 
 CREATE TABLE PoliticaDeCancelamento (
     id          INTEGER PRIMARY KEY,
-    nome        VARCHAR(25) NOT NULL, 
+    nome        VARCHAR(25) UNIQUE NOT NULL, 
     descricao   VARCHAR(500) NOT NULL, 
     percentagemReembolso INTEGER CHECK (percentagemReembolso >= 0 AND percentagemReembolso <= 1)
 );
@@ -183,7 +183,7 @@ CREATE TABLE Habitacao (
     id INTEGER PRIMARY KEY,
     numQuartos  INTEGER CHECK (numQuartos > 0), 
     maxHospedes INTEGER CHECK (maxHospedes > 0), 
-    morada      VARCHAR(250) UNIQUE, 
+    morada      VARCHAR(250) UNIQUE NOT NULL, 
     distCentro  INTEGER CHECK (distCentro >= 0), 
     precoNoite  REAL    CHECK (precoNoite > 0), 
     taxaLimpeza REAL CHECK (taxaLimpeza >= 0), 
@@ -225,7 +225,7 @@ DROP TABLE IF EXISTS Fotografia;
 
 CREATE TABLE Fotografia (
     urlImagem   VARCHAR(20) PRIMARY KEY, 
-    legenda     VARCHAR(250) DEFAULT NULL, 
+    legenda     VARCHAR(250), 
     habitacao   INTEGER REFERENCES Habitacao(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
