@@ -36,7 +36,6 @@ CREATE TABLE Utilizador (
     telefone        VARCHAR(15) UNIQUE NOT NULL, 
     morada          VARCHAR(250) NOT NULL, 
     codigoPostal    VARCHAR(10) NOT NULL, 
-    classificacaoMedia INTEGER CHECK(classificacaoMedia >= 1 AND classificacaoMedia <= 5),
     pais            INTEGER REFERENCES Pais (id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
@@ -45,6 +44,7 @@ DROP TABLE IF EXISTS Cliente;
 
 CREATE TABLE Cliente (
     id  INTEGER REFERENCES Utilizador(id)  ON DELETE CASCADE ON UPDATE CASCADE,
+    classificacaoCliente INTEGER CHECK(classificacaoCLiente >= 1 AND classificacaoCliente <= 5),
     PRIMARY KEY(id)
 );
 
@@ -54,6 +54,7 @@ DROP TABLE IF EXISTS Anfitriao;
 
 CREATE TABLE Anfitriao (
     id INTEGER REFERENCES Utilizador(id)  ON DELETE CASCADE ON UPDATE CASCADE,
+    classificacaoCliente INTEGER CHECK(classificacaoCliente >= 1 AND classificacaoCliente <= 5),
     PRIMARY KEY(id)
 );
 
@@ -85,6 +86,8 @@ CREATE TABLE Reserva (
     precoTotal  REAL    CHECK (precoTotal > 0), 
     habitacao   INTEGER REFERENCES Habitacao (id),
     UNIQUE (dataCheckIn, dataCheckOut, habitacao)
+    estado INTEGER REFERENCES Estado(id) ON DELETE CASCADE ON UPDATE CASCADE
+
 );
 
 -- Table: Estado
@@ -92,8 +95,7 @@ DROP TABLE IF EXISTS Estado;
 
 CREATE TABLE Estado (
     id      INTEGER PRIMARY KEY,                 
-    estado  CHAR(9) UNIQUE NOT NULL, 
-    reserva INTEGER REFERENCES Reserva(id) ON DELETE CASCADE ON UPDATE CASCADE
+    estado  CHAR(9) UNIQUE NOT NULL
 );
 
 -- Table: Cancelamento

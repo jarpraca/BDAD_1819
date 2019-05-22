@@ -198,23 +198,24 @@ insert into Cidade(id, nome, pais) values(15,"Toquio", 7);
 insert into Cidade(id, nome, pais) values(16,"Luanda", 8);
 insert into Cidade(id, nome, pais) values(17,"Sydney", 9);
 
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (1,"José Ribeiro", "1967-05-23", "jribeiro@gmail.com", "+351925317443", "Rua das Flores, 12", "4500-200", NULL, 1);
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (2,"Stuart Little", "1950-07-09", "slittle@gmail.com", "+1-541-754-3010", "2201 N American St, Philadelphia", "PA 19133", NULL, 2);
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (3,"Marta Silva", "1985-01-09", "msilva15@gmail.com", "+351914327743", "Rua do Sol, 215", "4520-330", NULL, 1);
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (4,"Ricardo Sousa", "2000-12-23", "rsousa@gmail.com", "+351965497443", "Rua da Alegria, 314", "4320-900", NULL, 1);
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (5,"Penélope Cruz", "1974-04-28", "pcruz@gmail.com", "+3437913627", "Calle de los Embajadores 1633, Madrid", "28045", NULL, 3);
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (6,"Kit Harington", "1986-12-26", "kharington@gmail.com", "+448235742", "6232 Tottenham Court Rd, London", "A400", NULL, 5);
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (7,"Monica Bellucci", "1964-09-30", "mbelluci@gmail.com", "+3903654727", "Viale Aurelio Saffi 25, Roma", "00152", NULL, 6);
-insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, classificacaoMedia, pais) values (8,"Chris Hemsworth", "1983-08-11", "chemsworth@gmail.com", "+618362842", "1651 Bunker Rd, Sydney", "NSW 2199", NULL, 9);
-insert into Anfitriao (id) values (1); 
-insert into Anfitriao (id) values (2);
-insert into Anfitriao (id) values (3);
-insert into Cliente (id) values (1);
-insert into Cliente (id) values (3);
-insert into Cliente (id) values (5);
-insert into Cliente (id) values (6);
-insert into Cliente (id) values (7);
-insert into Cliente (id) values (8);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (1,"José Ribeiro", "1967-05-23", "jribeiro@gmail.com", "+351925317443", "Rua das Flores, 12", "4500-200", 1);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (2,"Stuart Little", "1950-07-09", "slittle@gmail.com", "+1-541-754-3010", "2201 N American St, Philadelphia", "PA 19133", 2);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (3,"Marta Silva", "1985-01-09", "msilva15@gmail.com", "+351914327743", "Rua do Sol, 215", "4520-330", 1);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (4,"Ricardo Sousa", "2000-12-23", "rsousa@gmail.com", "+351965497443", "Rua da Alegria, 314", "4320-900", 1);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (5,"Penélope Cruz", "1974-04-28", "pcruz@gmail.com", "+3437913627", "Calle de los Embajadores 1633, Madrid", "28045", 3);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (6,"Kit Harington", "1986-12-26", "kharington@gmail.com", "+448235742", "6232 Tottenham Court Rd, London", "A400", 5);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (7,"Monica Bellucci", "1964-09-30", "mbelluci@gmail.com", "+3903654727", "Viale Aurelio Saffi 25, Roma", "00152", 6);
+insert into Utilizador (id, nome, dataNascimento, email, telefone, morada, codigoPostal, pais) values (8,"Chris Hemsworth", "1983-08-11", "chemsworth@gmail.com", "+618362842", "1651 Bunker Rd, Sydney", "NSW 2199", 9);
+insert into Anfitriao (id, classificacaoAnfitriao) values (1, NULL); 
+insert into Anfitriao (id, classificacaoAnfitriao) values (2, NULL);
+insert into Anfitriao (id, classificacaoAnfitriao) values (3, NULL);
+insert into Cliente (id, ClassificacaoCliente) values (1, NULL);
+insert into Cliente (id, ClassificacaoCliente) values (3, NULL);
+insert into Cliente (id, ClassificacaoCliente) values (4, NULL); 
+insert into Cliente (id, ClassificacaoCliente) values (5, NULL);
+insert into Cliente (id, ClassificacaoCliente) values (6, NULL);
+insert into Cliente (id, ClassificacaoCliente) values (7, NULL);
+insert into Cliente (id, ClassificacaoCliente) values (8, NULL);
 
 insert into MetodoDePagamento(id,nome) values(1,"Multibanco");
 insert into MetodoDePagamento(id,nome) values(2,"MB Way");
@@ -271,9 +272,14 @@ insert into Estado(id,estado, reserva) values(0,"Concluida", 2);
 insert into Estado(id,estado, reserva) values(1,"Em espera", 3);
 insert into Estado(id,estado, reserva) values(2,"A decorrer", 1);
 
-insert into ClassificacaoPorAnfitriao(classificacao, descricao, estadia) values (4, "Cliente muito simpatico e compreensivo. Otimo hospede!", 0);
+insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva) values (4, "Cliente muito simpatico e compreensivo. Otimo hospede!", 1);
+insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva) values (5, "Cliente responsável e limpo. Recomendo", 2);
+insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva) values (2, "Cliente pouco simpatico e compreensivo. Algumas queixas de barulho", 3);
 
-insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, estadia) values (5,4,4,3,NULL,5,"Anfitriao bastante atencioso, acompanhou de perto a nossa estadia tendo-nos feito sentir confortaveis e em casa. Recomendo vivamente.", 0);
+
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva) values (5,4,4,3,NULL,5,"Anfitriao bastante atencioso, acompanhou de perto a nossa estadia tendo-nos feito sentir confortaveis e em casa. Recomendo vivamente.", 1);
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva) values (3,5,5,3,NULL,2,"Anfitriao bastante conflituoso, não regressarei a nenhuma das suas habitações.", 2);
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva) values (5,4,4,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 3);
 
 insert into Disponivel (habitacao, data) values (1, '2019-06-01');   
 insert into Disponivel (habitacao, data) values (1, '2019-06-02');
