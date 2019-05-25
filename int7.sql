@@ -4,10 +4,9 @@ PRAGMA foreign_keys = ON;
 .headers	on
 .nullvalue	NULL
 
-DECLARE mes  = (SELECT strftime('%m', Reserva.dataCheckIn) 
-                                    FROM Reserva)
-                                    
-SELECT Reserva.idReserva, Ciade.nome, mes 
-FROM  Cidade, Reserva, Habitacao
-WHERE ( Reserva.idHabitacao = Habitacao.idHabitacao AND Habitacao.idCidade = Cidade.idCidade)
-GROUP BY mes
+SELECT mes , cidade, max(sum)
+FROM (SELECT strftime('%m', Reserva.dataCheckIn) mes, Cidade.nome cidade, count(*) sum
+      FROM  Cidade, Reserva, Habitacao
+      WHERE (Reserva.idHabitacao = Habitacao.idHabitacao AND Habitacao.idCidade = Cidade.idCidade) 
+      GROUP BY  mes, cidade)
+GROUP BY mes;
