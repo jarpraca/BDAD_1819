@@ -3,11 +3,11 @@
 .nullvalue  NULL
 PRAGMA foreign_keys = ON;
 
-SELECT limpeza, valor, checkIn, localizacao
+SELECT idHabitacao, limpeza, valor, checkIn, localizacao
 FROM (
-    (SELECT limpeza, MAX(count)
+    (SELECT limpeza, MAX(count), idHabitacao
     FROM (
-        SELECT limpeza, COUNT(limpeza) AS count
+        SELECT limpeza, COUNT(limpeza) AS count, idHabitacao
         FROM (ClassificacaoPorCliente NATURAL JOIN Reserva)
         WHERE idHabitacao = 6
         GROUP BY limpeza

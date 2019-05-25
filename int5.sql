@@ -4,7 +4,7 @@ PRAGMA foreign_keys = ON;
 .headers	on
 .nullvalue	NULL
 
-SELECT ClassificacaoPorCliente.idCliente, ClassificacaoPorCliente.limpeza, ClassificacaoPorCliente.valor, ClassificacaoPorCliente.checkIn, ClassificacaoPorCliente.localizacao, ClassificacaoPorCliente.outros
-FROM  ClassificacaoPorCliente, Reserva
-WHERE ( ClassificacaoPorCliente.idReserva = Reserva.idReserva AND Reserva.idHabitacao = 4)
-order by ClassificacaoPorCliente.idCliente
+SELECT idHabitacao, idReserva, limpeza, valor, checkIn, localizacao, outros
+FROM  ClassificacaoPorCliente NATURAL JOIN Reserva
+WHERE idHabitacao = 4
+order by idReserva;

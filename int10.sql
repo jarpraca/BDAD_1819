@@ -7,7 +7,7 @@ SELECT idCliente
 FROM Cliente
 WHERE idCliente NOT IN(
     SELECT idCliente 
-    FROM (Reserva NATURAL JOIN Efetua) AS P
+    FROM Reserva NATURAL JOIN Efetua
     WHERE idEstado != 3
 ) AND EXISTS (
     SELECT idCliente
