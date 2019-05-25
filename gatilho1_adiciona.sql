@@ -1,9 +1,9 @@
-CREATE TRIGGER CLASSIFICACAO
-AFTER INSERT ON ClassificacaoPorAnfitriao
+PRAGMA foreign_keys = ON;
+
+CREATE TRIGGER Alterar_Estado
+BEFORE INSERT ON ClassificacaoPorAnfitriao
 FOR EACH ROW
-WHEN exists (SELECT * FROM Cliente WHERE id = )
+WHEN exists (SELECT * FROM Reserva WHERE Reserva.id = New.reserva AND Reserva.estado != 0)
 BEGIN
-    UPDATE Cliente
-    SET classificacaoMedia = 
-    WHERE id.Cliente = cliente.reserva.ClassificacaoPorAnfitriao;
+    SELECT RAISE(IGNORE);
 END;

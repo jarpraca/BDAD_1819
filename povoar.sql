@@ -262,25 +262,6 @@ insert into Habitacao(id,numQuartos, maxHospedes,morada, distCentro,precoNoite, 
 insert into Habitacao(id,numQuartos, maxHospedes,morada, distCentro,precoNoite, taxaLimpeza, classificacaoMedia, cidade, tipo, politica) values (3,1,2,"Rua da Boavista",1, 35, 50, NULL, 1, 6,3);
 insert into Habitacao(id,numQuartos, maxHospedes,morada, distCentro,precoNoite, taxaLimpeza, classificacaoMedia, cidade, tipo, politica) values (4,1,1,"Praceta Joao XXI",7, 80, 5, NULL, 3, 5,2);
 
-insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao) values (1, '2019-06-20', '2019-06-27', 6, 260, 1);
-insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao) values (2, '2019-07-02', '2019-07-15', 1, 80, 4);
-insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao) values (3, '2019-05-03', '2019-08-03', 1, 3235, 3);
-
-insert into Cancelamento(reembolso, cliente, reserva) values (260, 3, 1);
-
-insert into Estado(id,estado, reserva) values(0,"Concluida", 2);
-insert into Estado(id,estado, reserva) values(1,"Em espera", 3);
-insert into Estado(id,estado, reserva) values(2,"A decorrer", 1);
-
-insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva) values (4, "Cliente muito simpatico e compreensivo. Otimo hospede!", 1);
-insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva) values (5, "Cliente responsável e limpo. Recomendo", 2);
-insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva) values (2, "Cliente pouco simpatico e compreensivo. Algumas queixas de barulho", 3);
-
-
-insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva) values (5,4,4,3,NULL,5,"Anfitriao bastante atencioso, acompanhou de perto a nossa estadia tendo-nos feito sentir confortaveis e em casa. Recomendo vivamente.", 1);
-insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva) values (3,5,5,3,NULL,2,"Anfitriao bastante conflituoso, não regressarei a nenhuma das suas habitações.", 2);
-insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva) values (5,4,4,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 3);
-
 insert into Disponivel (habitacao, data) values (1, '2019-06-01');   
 insert into Disponivel (habitacao, data) values (1, '2019-06-02');
 insert into Disponivel (habitacao, data) values (1, '2019-06-03');
@@ -636,14 +617,6 @@ insert into Dispoe (comodidade, habitacao) values (9,3);
 insert into Dispoe (comodidade, habitacao) values (9,4);
 insert into Dispoe (comodidade, habitacao) values (11,4);
 
-insert into Efetua(cliente, reserva) values (3, 1);
-insert into Efetua(cliente, reserva) values (4, 2);
-insert into Efetua(cliente, reserva) values (1, 3);
-
-insert into EscolhidoPeloCliente(metodo, reserva) values(2, 2);
-insert into EscolhidoPeloCliente(metodo, reserva) values(4, 3);
-insert into EscolhidoPeloCliente(metodo, reserva) values(3, 1);
-
 insert into Favorito(cliente, habitacao) values (4, 3);
 insert into Favorito(cliente, habitacao) values (4, 4);
 insert into Favorito(cliente, habitacao) values (1, 1);
@@ -670,7 +643,35 @@ insert into Fotografia(urlImagem,legenda, habitacao) values ("bit.ly/HDAfhd", "C
 insert into Fotografia(urlImagem,legenda, habitacao) values ("bit.ly/HjhFEH", "Piscina Interior", 4);
 
 insert into Possui(anfitriao, habitacao) values(1, 4);
-insert into Possui(anfitriao, habitacao) values(2, 3);
+insert into Possui(anfitriao, habitacao) values(3, 3);
 insert into Possui(anfitriao, habitacao) values(2, 1);
 insert into Possui(anfitriao, habitacao) values(1, 2);
 
+insert into Estado(id,estado) values(0,"Concluida");
+insert into Estado(id,estado) values(1,"Em espera");
+insert into Estado(id,estado) values(2,"A decorrer");
+
+insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao, estado) values (1, '2019-06-20', '2019-06-27', 6, 260, 1, 0);
+insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao, estado) values (2, '2019-07-02', '2019-07-15', 1, 80, 4, 1);
+insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao, estado) values (3, '2019-05-03', '2019-08-03', 1, 3235, 3, 2);
+insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao, estado) values (4, '2019-06-28', '2019-06-29', 6, 260, 1, 0);
+insert into Reserva(id, dataCheckIn, dataCheckOut, numHospedes, precoTotal, habitacao, estado) values (5, '2019-06-30', '2019-07-01', 6, 260, 1, 0);
+
+insert into EscolhidoPeloCliente(metodo, reserva) values(2, 2);
+insert into EscolhidoPeloCliente(metodo, reserva) values(4, 3);
+insert into EscolhidoPeloCliente(metodo, reserva) values(3, 1);
+
+insert into Efetua(cliente, reserva) values (3, 1);
+insert into Efetua(cliente, reserva) values (4, 2);
+insert into Efetua(cliente, reserva) values (1, 3);
+insert into Efetua(cliente, reserva) values (5, 4);
+insert into Efetua(cliente, reserva) values (6, 5);
+
+insert into Cancelamento(reembolso, cliente, reserva) values (260, 3, 2);
+
+insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva, anfitriao) values (4, "Cliente muito simpatico e compreensivo. Otimo hospede!", 1, 2);
+insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva, anfitriao) values (5, "Cliente responsável e limpo. Recomendo", 2, 1);
+--insert into ClassificacaoPorAnfitriao(classificacao, descricao, reserva, anfitriao) values (2, "Cliente pouco simpatico e compreensivo. Algumas queixas de barulho", 3, 3);
+
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva, cliente) values (3,5,5,3,NULL,2,"Anfitriao bastante conflituoso, não regressarei a nenhuma das suas habitações.", 2, 4);
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, reserva, cliente) values (5,4,4,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 3, 1);
