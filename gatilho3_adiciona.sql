@@ -5,5 +5,5 @@ AFTER INSERT ON Reserva
 FOR EACH ROW
 BEGIN
     DELETE FROM Disponivel
-    WHERE Disponivel.habitacao = New.habitacao AND Disponivel.data >= New.dataCheckIn AND Disponivel.data <= New.dataCheckOut;
+    WHERE Disponivel.idHabitacao = New.idHabitacao AND Disponivel.data >= New.dataCheckIn AND Disponivel.data <= New.dataCheckOut;
 END;

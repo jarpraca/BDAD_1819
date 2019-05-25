@@ -12,7 +12,7 @@ CREATE TABLE Agenda (
 DROP TABLE IF EXISTS Pais;
 
 CREATE TABLE Pais (
-    id      INTEGER PRIMARY KEY,
+    idPais      INTEGER PRIMARY KEY,
     nome    VARCHAR(15) UNIQUE NOT NULL 
 );
 
@@ -20,32 +20,32 @@ CREATE TABLE Pais (
 DROP TABLE IF EXISTS Cidade;
 
 CREATE TABLE Cidade (
-    id      INTEGER PRIMARY KEY,
+    idCidade      INTEGER PRIMARY KEY,
     nome    VARCHAR(15) NOT NULL, 
-    pais    INTEGER REFERENCES Pais (id) 
+    idPais    INTEGER REFERENCES Pais (idPais) 
 );
 
 -- Table: Utilizador
 DROP TABLE IF EXISTS Utilizador;
 
 CREATE TABLE Utilizador (
-    id              INTEGER PRIMARY KEY,
+    idUtilizador    INTEGER PRIMARY KEY,
     nome            VARCHAR(30) NOT NULL, 
     dataNascimento  DATE        NOT NULL, 
     email           VARCHAR(30) UNIQUE NOT NULL, 
     telefone        VARCHAR(15) UNIQUE NOT NULL, 
     morada          VARCHAR(250) NOT NULL, 
     codigoPostal    VARCHAR(10) NOT NULL, 
-    pais            INTEGER REFERENCES Pais (id) ON DELETE SET NULL ON UPDATE CASCADE
+    idPais            INTEGER REFERENCES Pais (idPais) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- Table: Cliente
 DROP TABLE IF EXISTS Cliente;
 
 CREATE TABLE Cliente (
-    id  INTEGER REFERENCES Utilizador(id)  ON DELETE CASCADE ON UPDATE CASCADE,
+    idCliente  INTEGER REFERENCES Utilizador(idUtilizador)  ON DELETE CASCADE ON UPDATE CASCADE,
     classificacaoCliente INTEGER CHECK(classificacaoCLiente >= 1 AND classificacaoCliente <= 5),
-    PRIMARY KEY(id)
+    PRIMARY KEY(idCliente)
 );
 
 
@@ -53,16 +53,16 @@ CREATE TABLE Cliente (
 DROP TABLE IF EXISTS Anfitriao;
 
 CREATE TABLE Anfitriao (
-    id INTEGER REFERENCES Utilizador(id)  ON DELETE CASCADE ON UPDATE CASCADE,
+    idAnfitriao INTEGER REFERENCES Utilizador(idUtilizador)  ON DELETE CASCADE ON UPDATE CASCADE,
     classificacaoAnfitriao INTEGER CHECK(classificacaoAnfitriao >= 1 AND classificacaoAnfitriao <= 5),
-    PRIMARY KEY(id)
+    PRIMARY KEY(idAnfitriao)
 );
 
 -- Table: MetodoDePagamento
 DROP TABLE IF EXISTS MetodoDePagamento;
 
 CREATE TABLE MetodoDePagamento (
-    id      INTEGER PRIMARY KEY,
+    idMetodo      INTEGER PRIMARY KEY,
     nome    VARCHAR(25) UNIQUE NOT NULL
 );
 
@@ -70,30 +70,30 @@ CREATE TABLE MetodoDePagamento (
 DROP TABLE IF EXISTS Aceita;
 
 CREATE TABLE Aceita ( 
-    anfitriao   INTEGER REFERENCES Anfitriao (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    metodo      INTEGER  REFERENCES MetodoDePagamento(id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    PRIMARY KEY (anfitriao, metodo)
+    anfitriao   INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idMetodo      INTEGER  REFERENCES MetodoDePagamento(idMetodo) ON DELETE CASCADE ON UPDATE CASCADE, 
+    PRIMARY KEY (anfitriao, idMetodo)
 );
 
 -- Table: Reserva
 DROP TABLE IF EXISTS Reserva;
 
 CREATE TABLE Reserva (
-    id          INTEGER PRIMARY KEY, 
+    idReserva          INTEGER PRIMARY KEY, 
     dataCheckIn DATE    NOT NULL,
     dataCheckOut DATE   NOT NULL,
     numHospedes INTEGER CHECK (numHospedes > 0), 
     precoTotal  REAL    CHECK (precoTotal > 0), 
-    habitacao   INTEGER REFERENCES Habitacao (id),
-    estado INTEGER REFERENCES Estado(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    UNIQUE (dataCheckIn, dataCheckOut, habitacao)
+    idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao),
+    idEstado INTEGER REFERENCES Estado(idEstado) ON DELETE CASCADE ON UPDATE CASCADE,
+    UNIQUE (dataCheckIn, dataCheckOut, idHabitacao)
 );
 
 -- Table: Estado
 DROP TABLE IF EXISTS Estado;
 
 CREATE TABLE Estado (
-    id      INTEGER PRIMARY KEY,                 
+    idEstado      INTEGER PRIMARY KEY,                 
     estado  CHAR(9) UNIQUE NOT NULL
 );
 
@@ -102,9 +102,9 @@ DROP TABLE IF EXISTS Cancelamento;
 
 CREATE TABLE Cancelamento (
     reembolso   INTEGER     NOT NULL, 
-    cliente     INTEGER REFERENCES Cliente (id)  ON DELETE CASCADE ON UPDATE CASCADE, 
-    reserva     INTEGER REFERENCES Reserva (id)  ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY(reserva)
+    idCliente     INTEGER REFERENCES Cliente (idCliente)  ON DELETE CASCADE ON UPDATE CASCADE, 
+    idReserva     INTEGER REFERENCES Reserva (idReserva)  ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY(idReserva)
 );
 
 -- Table: ClassificacaoPorAnfitriao
@@ -113,9 +113,9 @@ DROP TABLE IF EXISTS ClassificacaoPorAnfitriao;
 CREATE TABLE ClassificacaoPorAnfitriao (
     classificacao   INTEGER CHECK(classificacao >= 1 AND classificacao <= 5), 
     descricao       VARCHAR(500) DEFAULT 'Nao preenchido', 
-    reserva         INTEGER REFERENCES Reserva (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
-    anfitriao       INTEGER REFERENCES Anfitriao (id) ON DELETE RESTRICT ON UPDATE RESTRICT, 
-    PRIMARY KEY (reserva)
+    idReserva         INTEGER REFERENCES Reserva (idReserva) ON DELETE RESTRICT ON UPDATE RESTRICT,
+    idAnfitriao       INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE RESTRICT ON UPDATE RESTRICT, 
+    PRIMARY KEY (idReserva)
 );
 
 -- Table: ClassificacaoPorCliente
@@ -129,16 +129,16 @@ CREATE TABLE ClassificacaoPorCliente (
     outros      VARCHAR(500) DEFAULT 'Nao preenchido', 
     classificacaoAnfitriao  INTEGER CHECK(classificacaoAnfitriao >= 1 AND classificacaoAnfitriao <= 5),
     descricaoAnfitriao      VARCHAR(500) DEFAULT 'Nao preenchido', 
-    cliente INTEGER REFERENCES Cliente (id)  ON DELETE RESTRICT ON UPDATE RESTRICT,
-    reserva INTEGER REFERENCES Reserva (id) ON DELETE RESTRICT ON UPDATE RESTRICT, 
-    PRIMARY KEY (reserva)
+    idCliente INTEGER REFERENCES Cliente (idCliente)  ON DELETE RESTRICT ON UPDATE RESTRICT,
+    idReserva INTEGER REFERENCES Reserva (idReserva) ON DELETE RESTRICT ON UPDATE RESTRICT, 
+    PRIMARY KEY (idReserva)
 );
 
 -- Table: Comodidade
 DROP TABLE IF EXISTS Comodidade;
 
 CREATE TABLE Comodidade (
-    id      INTEGER PRIMARY KEY,
+    idComodidade      INTEGER PRIMARY KEY,
     nome    VARCHAR(15) UNIQUE NOT NULL
 );
 
@@ -146,25 +146,25 @@ CREATE TABLE Comodidade (
 DROP TABLE IF EXISTS Efetua;
 
 CREATE TABLE Efetua (
-    cliente INTEGER REFERENCES Cliente(id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    reserva INTEGER REFERENCES Reserva(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY(reserva)
+    idCliente INTEGER REFERENCES Cliente(idCliente) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idReserva INTEGER REFERENCES Reserva(idReserva) ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY(idReserva)
 );
 
 -- Table: EscolhidoPelocliente
 DROP TABLE IF EXISTS EscolhidoPelocliente;
 
 CREATE TABLE EscolhidoPelocliente (
-    metodo  INTEGER REFERENCES MetodoDePagamento(id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    reserva INTEGER REFERENCES Reserva(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (reserva)
+    idMetodo  INTEGER REFERENCES MetodoDePagamento(idMetodo) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idReserva INTEGER REFERENCES Reserva(idReserva) ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY (idReserva)
 );
 
 -- Table: TipoDeHabitacao
 DROP TABLE IF EXISTS TipoDeHabitacao;
 
 CREATE TABLE TipoDeHabitacao (
-    id   INTEGER PRIMARY KEY,
+    idTipo   INTEGER PRIMARY KEY,
     nome VARCHAR(30) UNIQUE NOT NULL
 );
 
@@ -172,7 +172,7 @@ CREATE TABLE TipoDeHabitacao (
 DROP TABLE IF EXISTS PoliticaDeCancelamento;
 
 CREATE TABLE PoliticaDeCancelamento (
-    id          INTEGER PRIMARY KEY,
+    idPolitica          INTEGER PRIMARY KEY,
     nome        VARCHAR(25) UNIQUE NOT NULL, 
     descricao   VARCHAR(500) NOT NULL, 
     percentagemReembolso INTEGER CHECK (percentagemReembolso >= 0 AND percentagemReembolso <= 1)
@@ -182,44 +182,44 @@ CREATE TABLE PoliticaDeCancelamento (
 DROP TABLE IF EXISTS Habitacao;
 
 CREATE TABLE Habitacao (
-    id INTEGER PRIMARY KEY,
+    idHabitacao INTEGER PRIMARY KEY,
     numQuartos  INTEGER CHECK (numQuartos > 0), 
     maxHospedes INTEGER CHECK (maxHospedes > 0), 
     morada      VARCHAR(250) UNIQUE NOT NULL, 
     distCentro  INTEGER CHECK (distCentro >= 0), 
     precoNoite  REAL    CHECK (precoNoite > 0), 
     taxaLimpeza REAL CHECK (taxaLimpeza >= 0), 
-    classificacaoMedia INTEGER  CHECK(classificacaoMedia >= 1 AND classificacaoMedia <= 5), 
-    cidade      INTEGER REFERENCES Cidade (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    tipo        INTEGER REFERENCES TipoDeHabitacao (id) ON DELETE SET NULL ON UPDATE CASCADE, 
-    politica    INTEGER REFERENCES PoliticaDeCancelamento (id) ON DELETE RESTRICT ON UPDATE CASCADE
+    classificacaoHabitacao INTEGER  CHECK(classificacaoHabitacao >= 1 AND classificacaoHabitacao <= 5), 
+    idCidade      INTEGER REFERENCES Cidade (idCidade) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idTipo        INTEGER REFERENCES TipoDeHabitacao (idTipo) ON DELETE SET NULL ON UPDATE CASCADE, 
+    idPolitica    INTEGER REFERENCES PoliticaDeCancelamento (idPolitica) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- Table: Disponivel
 DROP TABLE IF EXISTS Disponivel;
 
 CREATE TABLE Disponivel (
-    habitacao   INTEGER REFERENCES Habitacao (id)  ON DELETE CASCADE ON UPDATE CASCADE, 
+    idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao)  ON DELETE CASCADE ON UPDATE CASCADE, 
     data        DATE REFERENCES Agenda (data)  ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (habitacao, data)
+    PRIMARY KEY (idHabitacao, data)
 );
 
 -- Table: Dispoe
 DROP TABLE IF EXISTS Dispoe;
 
 CREATE TABLE Dispoe (
-    comodidade  INTEGER REFERENCES Comodidade (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    habitacao   INTEGER REFERENCES Habitacao (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    PRIMARY KEY (comodidade, habitacao)
+    idComodidade  INTEGER REFERENCES Comodidade (idComodidade) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
+    PRIMARY KEY (idComodidade, idHabitacao)
 );
 
 -- Table: Favorito
 DROP TABLE IF EXISTS Favorito;
 
 CREATE TABLE Favorito (
-    cliente     INTEGER REFERENCES Cliente (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    habitacao   INTEGER REFERENCES Habitacao (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    PRIMARY KEY (cliente, habitacao)
+    idCliente     INTEGER REFERENCES Cliente (idCliente) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
+    PRIMARY KEY (idCliente, idHabitacao)
 );
 
 -- Table: Fotografia
@@ -228,7 +228,7 @@ DROP TABLE IF EXISTS Fotografia;
 CREATE TABLE Fotografia (
     urlImagem   VARCHAR(20) PRIMARY KEY, 
     legenda     VARCHAR(250), 
-    habitacao   INTEGER REFERENCES Habitacao(id) ON DELETE CASCADE ON UPDATE CASCADE
+    idHabitacao   INTEGER REFERENCES Habitacao(idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -236,9 +236,9 @@ CREATE TABLE Fotografia (
 DROP TABLE IF EXISTS Possui;
 
 CREATE TABLE Possui (
-    anfitriao   INTEGER REFERENCES Anfitriao (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    habitacao   INTEGER REFERENCES Habitacao (id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    PRIMARY KEY (habitacao)
+    idAnfitriao   INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE CASCADE ON UPDATE CASCADE, 
+    idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao) ON DELETE CASCADE ON UPDATE CASCADE, 
+    PRIMARY KEY (idHabitacao)
 );
 
 COMMIT TRANSACTION;

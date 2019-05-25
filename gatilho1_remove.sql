@@ -1,1 +1,1 @@
-DROP TRIGGER IF EXISTS Alterar_Estado;
+DROP TRIGGER IF EXISTS Restricao_Estado;
