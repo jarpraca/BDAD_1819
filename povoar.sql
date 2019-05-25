@@ -656,6 +656,7 @@ insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTota
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (3, '2019-05-03', '2019-08-03', 1, 3235, 3, 2);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (4, '2019-06-28', '2019-06-29', 6, 260, 1, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (5, '2019-06-30', '2019-07-01', 6, 260, 2, 0);
+insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (6, '2019-04-30', '2019-05-01', 6, 100, 1, 0);
 
 insert into EscolhidoPeloCliente(idMetodo, idReserva) values(2, 2);
 insert into EscolhidoPeloCliente(idMetodo, idReserva) values(4, 3);
@@ -666,6 +667,7 @@ insert into Efetua(idCliente, idReserva) values (4, 2);
 insert into Efetua(idCliente, idReserva) values (1, 3);
 insert into Efetua(idCliente, idReserva) values (5, 4);
 insert into Efetua(idCliente, idReserva) values (6, 5);
+insert into Efetua(idCliente, idReserva) values (1, 6);
 
 insert into Cancelamento(reembolso, idCliente, idReserva) values (260, 3, 2);
 
