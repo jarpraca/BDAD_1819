@@ -677,6 +677,7 @@ insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, distCentro,pre
 insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, distCentro,precoNoite, taxaLimpeza, classificacaoHabitacao, idCidade, idTipo, idPolitica) values (6,3,3,"Rua D.Pedro III, s/n",33, 40, 3, NULL, 7, 2,1);
 insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, distCentro,precoNoite, taxaLimpeza, classificacaoHabitacao, idCidade, idTipo, idPolitica) values (7,2,4,"Rua da Trindade",2,43, 30, NULL, 3, 2,3);
 insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, distCentro,precoNoite, taxaLimpeza, classificacaoHabitacao, idCidade, idTipo, idPolitica) values (8,1,2,"Praca Joao I",5, 23, 44, NULL, 3, 5,2);
+insert into Habitacao(idHabitacao,numQuartos, maxHospedes,morada, distCentro,precoNoite, taxaLimpeza, classificacaoHabitacao, idCidade, idTipo, idPolitica) values (9,3,7,"Rua do Algarve, 23",5, 23, 44, NULL, 7, 2, 2);
 
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-01');   
 insert into Disponivel (idHabitacao, data) values (1, '2019-06-02');
@@ -1139,7 +1140,6 @@ insert into Efetua(idCliente, idReserva) values (5, 4);
 insert into Efetua(idCliente, idReserva) values (6, 5);
 insert into Efetua(idCliente, idReserva) values (1, 6);
 insert into Efetua(idCliente, idReserva) values (1, 7);													   
-
 insert into Efetua(idCliente, idReserva) values (10, 18);
 insert into Efetua(idCliente, idReserva) values (11, 12);
 insert into Efetua(idCliente, idReserva) values (12, 11);
@@ -1160,3 +1160,7 @@ insert into ClassificacaoPorAnfitriao(classificacao, descricao, idReserva, idAnf
 
 insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (3,5,5,3,NULL,2,"Anfitriao bastante conflituoso, não regressarei a nenhuma das suas habitações.", 2, 4);
 insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (5,4,4,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 3, 1);
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (5,2,4,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 8, 15);
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (3,3,3,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 12, 11);
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (4,4,3,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 13, 16);
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idReserva, idCliente) values (5,5,3,3,NULL,5,"Anfitriao pouco atencioso em local pouco amigável o que levou a alguns problemas", 18, 10);

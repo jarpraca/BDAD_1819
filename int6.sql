@@ -3,4 +3,34 @@
 .nullvalue  NULL
 PRAGMA foreign_keys = ON;
 
-SELECT MAX()
+SELECT limpeza, valor, checkIn, localizacao
+FROM (
+    (SELECT limpeza, MAX(count)
+    FROM (
+        SELECT limpeza, COUNT(limpeza) AS count
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva)
+        WHERE idHabitacao = 6
+        GROUP BY limpeza
+    )),
+    (SELECT valor, MAX(count)
+    FROM (
+        SELECT valor, COUNT(valor) AS count
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva)
+        WHERE idHabitacao = 6
+        GROUP BY valor
+    )),
+    (SELECT checkIn, MAX(count)
+    FROM (
+        SELECT checkIn, COUNT(checkIn) AS count
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva)
+        WHERE idHabitacao = 6
+        GROUP BY checkIn
+    )),
+    (SELECT localizacao, MAX(count)
+    FROM (
+        SELECT localizacao, COUNT(localizacao) AS count
+        FROM (ClassificacaoPorCliente NATURAL JOIN Reserva)
+        WHERE idHabitacao = 6
+        GROUP BY localizacao
+    ))
+);
