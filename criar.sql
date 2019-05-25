@@ -84,7 +84,7 @@ CREATE TABLE Reserva (
     dataCheckOut DATE   NOT NULL,
     numHospedes INTEGER CHECK (numHospedes > 0), 
     precoTotal  REAL    CHECK (precoTotal > 0), 
-    estado INTEGER REFERENCES Estado(id) ON DELETE CASCADE ON UPDATE CASCADE
+    idEstado INTEGER REFERENCES Estado(idEstado) ON DELETE CASCADE ON UPDATE CASCADE,
     idHabitacao   INTEGER REFERENCES Habitacao (idHabitacao),
     UNIQUE (dataCheckIn, idHabitacao)
 );
