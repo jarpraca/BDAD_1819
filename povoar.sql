@@ -620,9 +620,11 @@ insert into Cliente (idCliente, ClassificacaoCliente) values (5, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (6, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (7, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (8, NULL);
+insert into Cliente (idCliente, ClassificacaoCliente) values (9, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (10, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (11, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (12, NULL); 
+insert into Cliente (idCliente, ClassificacaoCliente) values (13, NULL); 
 insert into Cliente (idCliente, ClassificacaoCliente) values (14, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (15, NULL);
 insert into Cliente (idCliente, ClassificacaoCliente) values (16, NULL);
@@ -1082,19 +1084,18 @@ insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTota
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (4, '2019-06-28', '2019-06-29', 6, 260, 1, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (5, '2019-06-30', '2019-07-01', 6, 260, 2, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (6, '2019-04-30', '2019-05-01', 6, 100, 1, 0);
-
-insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (7, '2018-06-20', '2018-06-27', 6, 60, 5, 0);
+insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (7, '2019-08-30', '2019-09-01', 6, 100, 1, 1);																																							   
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (8, '2018-07-02', '2018-07-15', 2, 80, 6, 0);
-insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (9, '2018-05-03', '2018-08-03', 2, 335, 7, 0);
+insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (9, '2018-05-03', '2018-06-03', 2, 335, 7, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (10, '2018-06-28', '2018-06-29', 3, 360, 8, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (11, '2018-06-30', '2018-07-01', 3, 560, 5, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (12, '2018-04-30', '2018-05-01', 12, 120, 6, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (13, '2018-06-20', '2018-06-27', 11, 240, 6, 0);
 insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (14, '2018-07-02', '2018-07-15', 1, 40, 7, 0);
-insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (15, '2018-05-03', '2018-08-03', 1, 2435, 7, 0);
-insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (16, '2018-06-28', '2018-06-29', 3, 232, 8, 0);
-insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (17, '2018-06-30', '2018-07-01', 4, 220, 5, 0);
-insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (18, '2018-04-30', '2018-05-01', 8, 500, 6, 0);
+insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (15, '2018-06-10', '2018-06-23', 1, 2435, 7, 0);
+insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (16, '2018-07-03', '2018-07-08', 3, 232, 8, 0);
+insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (17, '2018-07-30', '2018-08-01', 4, 220, 5, 0);
+insert into Reserva(idReserva, dataCheckIn, dataCheckOut, numHospedes, precoTotal, idHabitacao, idEstado) values (18, '2018-08-30', '2018-09-01', 8, 500, 6, 0);
 
 insert into EscolhidoPeloCliente(idMetodo, idReserva) values(2, 2);
 insert into EscolhidoPeloCliente(idMetodo, idReserva) values(4, 3);
@@ -1106,21 +1107,22 @@ insert into Efetua(idCliente, idReserva) values (1, 3);
 insert into Efetua(idCliente, idReserva) values (5, 4);
 insert into Efetua(idCliente, idReserva) values (6, 5);
 insert into Efetua(idCliente, idReserva) values (1, 6);
+insert into Efetua(idCliente, idReserva) values (1, 7);													   
 
 insert into Efetua(idCliente, idReserva) values (10, 18);
 insert into Efetua(idCliente, idReserva) values (11, 12);
-insert into Efetua(idCliente, idReserva) values (12, 11;
+insert into Efetua(idCliente, idReserva) values (12, 11);
 insert into Efetua(idCliente, idReserva) values (14, 10);
 insert into Efetua(idCliente, idReserva) values (14, 9);
 insert into Efetua(idCliente, idReserva) values (15, 8);
-insert into Efetua(idCliente, idReserva) values (16, 7);
 insert into Efetua(idCliente, idReserva) values (14, 17);
 insert into Efetua(idCliente, idReserva) values (15, 16);
 insert into Efetua(idCliente, idReserva) values (16, 13);
 insert into Efetua(idCliente, idReserva) values (16, 14);
 insert into Efetua(idCliente, idReserva) values (16, 15);
 
-insert into Cancelamento(reembolso, idCliente, idReserva) values (260, 3, 2);
+insert into Cancelamento(reembolso, idCliente, idReserva) values (260, 4, 2);
+update Reserva set idEstado = 3 WHERE idReserva = 2;
 
 insert into ClassificacaoPorAnfitriao(classificacao, descricao, idReserva, idAnfitriao) values (4, "Cliente muito simpatico e compreensivo. Otimo hospede!", 1, 2);
 insert into ClassificacaoPorAnfitriao(classificacao, descricao, idReserva, idAnfitriao) values (5, "Cliente responsável e limpo. Recomendo", 2, 1);

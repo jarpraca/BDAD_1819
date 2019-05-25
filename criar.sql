@@ -112,8 +112,8 @@ DROP TABLE IF EXISTS ClassificacaoPorAnfitriao;
 CREATE TABLE ClassificacaoPorAnfitriao (
     classificacao   INTEGER CHECK(classificacao >= 1 AND classificacao <= 5), 
     descricao       VARCHAR(500) DEFAULT 'Nao preenchido', 
-    idReserva         INTEGER REFERENCES Reserva (idReserva) ON DELETE RESTRICT ON UPDATE RESTRICT,
-    idAnfitriao       INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE RESTRICT ON UPDATE RESTRICT, 
+    idReserva       INTEGER REFERENCES Reserva (idReserva) ON DELETE RESTRICT ON UPDATE RESTRICT,
+    idAnfitriao     INTEGER REFERENCES Anfitriao (idAnfitriao) ON DELETE RESTRICT ON UPDATE RESTRICT, 
     PRIMARY KEY (idReserva)
 );
 
