@@ -6,5 +6,5 @@ PRAGMA foreign_keys = ON;
 
 SELECT idHabitacao, idReserva, limpeza, valor, checkIn, localizacao, outros
 FROM  ClassificacaoPorCliente NATURAL JOIN Reserva
-WHERE idHabitacao = 4
+WHERE idHabitacao = 1
 order by idReserva;
