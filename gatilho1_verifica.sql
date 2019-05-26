@@ -3,6 +3,6 @@
 .nullvalue  NULL
 PRAGMA foreign_keys = ON;
 
-SELECT * FROM ClassificacaoPorAnfitriao WHERE idReserva = 3;
-insert into ClassificacaoPorAnfitriao(classificacao, descricao, idReserva, idAnfitriao) values (2, "Cliente pouco simpatico e compreensivo. Algumas queixas de barulho", 3, 3);
-SELECT * FROM ClassificacaoPorAnfitriao WHERE idReserva = 3;
+SELECT * FROM ClassificacaoPorCliente WHERE idReserva = 3;
+insert into ClassificacaoPorCliente(limpeza, valor, checkIn, localizacao, outros, classificacaoAnfitriao, descricaoAnfitriao, idCliente, idReserva ) values (5,4,4,3,NULL,4,"Anfitriao atencioso e preocupado", 4, 5);
+SELECT * FROM ClassificacaoPorCliente WHERE idReserva = 3;
